@@ -30,10 +30,21 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
 
-    <audio autoplay loop hidden>
+    <!-- Audio para reproducción automática -->
+    <audio id="bgMusic" loop hidden>
         <source src="img/musica.mp3" type="audio/mp3">
         Tu navegador no soporta la reproducción de audio.
     </audio>
+
+    <!-- JavaScript para asegurarse de que el audio se reproduzca automáticamente -->
+    <script>
+        window.addEventListener('load', function() {
+            var audio = document.getElementById('bgMusic');
+            audio.play().catch(function(error) {
+                console.log('Reproducción automática bloqueada:', error);
+            });
+        });
+    </script>
 
     <!-- Navbar Start -->
     <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
