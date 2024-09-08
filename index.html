@@ -29,23 +29,6 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
-
-    <!-- Audio para reproducción automática -->
-    <audio id="bgMusic" loop hidden>
-        <source src="img/musica.mp3" type="audio/mp3">
-        Tu navegador no soporta la reproducción de audio.
-    </audio>
-
-    <!-- JavaScript para asegurarse de que el audio se reproduzca automáticamente -->
-    <script>
-        window.addEventListener('load', function() {
-            var audio = document.getElementById('bgMusic');
-            audio.play().catch(function(error) {
-                console.log('Reproducción automática bloqueada:', error);
-            });
-        });
-    </script>
-
     <!-- Navbar Start -->
     <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
         <a href="index.html" class="navbar-brand d-block d-lg-none">
@@ -145,8 +128,11 @@
 
     <!-- About Start -->
     <div class="container-fluid py-5" id="about">
+        <button class="btn btn-primary px-4 py-2 text-center" id="playButton">Reproducir Música</button>
+
         <div class="container py-5">
             <div class="section-title position-relative text-center">
+                
                 <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Nosotros</h6>
                 <h1 class="font-secondary display-4">Juan & Karla</h1>
                 <i class="far fa-heart text-dark"></i>
@@ -472,6 +458,28 @@ Al igual que todos, también afrontamos por problemas sin embargo gracias a Jeho
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-outline-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <audio id="audioPlayer">
+        <source src="img/musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Botón para iniciar audio -->
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const audio = document.getElementById('audioPlayer');
+            const playButton = document.getElementById('playButton');
+
+            playButton.addEventListener('click', () => {
+                audio.play();
+            });
+
+            audio.addEventListener('ended', () => {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        });
+    </script>
 
 
     <script>
